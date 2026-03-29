@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Launch House Golf – Irvine, OC</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ─── DESIGN TOKENS ─── */
+  :root {
+    --black: #0a0a0a;
+    --dark: #111111;
+    --card: #161616;
+    --border: rgba(255,255,255,0.08);
+    --accent: #c8f135;       /* Launch House lime/yellow-green */
+    --accent-dark: #a8d020;
+    --white: #ffffff;
+    --muted: #888888;
+    --font-display: 'Bebas Neue', Impact, sans-serif;
+    --font-body: 'DM Sans', system-ui, sans-serif;
+    --max: 1200px;
+    --radius: 6px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img { display: block; max-width: 100%; }
+  a { color: inherit; text-decoration: none; }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    height: 64px;
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    letter-spacing: 0.04em;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .nav-logo .oc-tag {
+    font-size: 0.7rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    background: var(--accent);
+    color: var(--black);
+    padding: 2px 8px;
+    border-radius: 3px;
+    line-height: 1.6;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--muted);
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--white); }
+
+  .nav-book {
+    background: var(--accent);
+    color: var(--black) !important;
+    font-weight: 600 !important;
+    padding: 0.5rem 1.2rem;
+    border-radius: var(--radius);
+    transition: background 0.2s !important;
+  }
+
+  .nav-book:hover { background: var(--accent-dark) !important; color: var(--black) !important; }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: relative;
+    overflow: hidden;
+    padding: 6rem 2rem 5rem;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(to right, rgba(0,0,0,0.75) 45%, rgba(0,0,0,0.15) 100%),
+      url('https://images.unsplash.com/photo-1535131749006-b7f58c99034b?w=1600&q=80') center/cover no-repeat;
+  }
+
+  .hero-content {
+    position: relative;
+    max-width: var(--max);
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(3.5rem, 9vw, 7.5rem);
+    line-height: 0.92;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    max-width: 720px;
+  }
+
+  .hero h1 em {
+    font-style: normal;
+    color: var(--accent);
+  }
+
+  .hero-sub {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.7);
+    max-width: 440px;
+    margin-bottom: 2.5rem;
+    line-height: 1.65;
+  }
+
+  .hero-address {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .hero-address svg { opacity: 0.5; }
+
+  .hero-ctas {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--black);
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.85rem 2rem;
+    border-radius: var(--radius);
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .btn-primary:hover {
+    background: var(--accent-dark);
+    transform: translateY(-1px);
+  }
+
+  .btn-outline {
+    display: inline-block;
+    border: 1px solid rgba(255,255,255,0.3);
+    color: var(--white);
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.85rem 2rem;
+    border-radius: var(--radius);
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .btn-outline:hover {
+    border-color: var(--white);
+    background: rgba(255,255,255,0.05);
+  }
+
+  /* ─── SECTION UTIL ─── */
+  section { padding: 6rem 2rem; }
+
+  .container {
+    max-width: var(--max);
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 18px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    line-height: 0.95;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .section-body {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.6);
+    max-width: 520px;
+    line-height: 1.7;
+  }
+
+  /* ─── AIRBNB INTRO STRIP ─── */
+  .intro-strip {
+    background: var(--accent);
+    padding: 0;
+  }
+
+  .intro-strip .container {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0;
+    align-items: stretch;
+  }
+
+  .intro-quote {
+    padding: 2.5rem 3rem;
+    border-right: 1px solid rgba(0,0,0,0.12);
+  }
+
+  .intro-quote p {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 3vw, 2.6rem);
+    color: var(--black);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    line-height: 1.05;
+  }
+
+  .intro-details {
+    padding: 2.5rem 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.6rem;
+  }
+
+  .intro-details p {
+    font-size: 0.9rem;
+    color: rgba(0,0,0,0.75);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    line-height: 1.5;
+  }
+
+  .intro-details p::before {
+    content: '—';
+    font-weight: 700;
+    color: var(--black);
+    flex-shrink: 0;
+  }
+
+  /* ─── HOW IT WORKS ─── */
+  .how-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-top: 4rem;
+  }
+
+  .how-step {
+    background: var(--dark);
+    padding: 2rem;
+    position: relative;
+  }
+
+  .step-num {
+    font-family: var(--font-display);
+    font-size: 4rem;
+    line-height: 1;
+    color: rgba(200,241,53,0.12);
+    margin-bottom: 1rem;
+    letter-spacing: 0.02em;
+  }
+
+  .step-title {
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+
+  .step-body {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.6;
+  }
+
+  /* ─── OFFERINGS GRID ─── */
+  .offerings-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 4rem;
+  }
+
+  .offering-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: border-color 0.25s, transform 0.2s;
+  }
+
+  .offering-card:hover {
+    border-color: rgba(200,241,53,0.35);
+    transform: translateY(-3px);
+  }
+
+  .offering-img {
+    height: 200px;
+    background: var(--dark);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .offering-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.85;
+    transition: opacity 0.3s, transform 0.4s;
+  }
+
+  .offering-card:hover .offering-img img {
+    opacity: 1;
+    transform: scale(1.03);
+  }
+
+  .offering-body {
+    padding: 1.5rem;
+  }
+
+  .offering-tag {
+    font-size: 0.65rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+
+  .offering-title {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    line-height: 1.1;
+  }
+
+  .offering-desc {
+    font-size: 0.875rem;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.65;
+    margin-bottom: 1.25rem;
+  }
+
+  .offering-link {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--accent);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    transition: gap 0.2s;
+  }
+
+  .offering-card:hover .offering-link { gap: 0.6rem; }
+
+  /* ─── RATES ─── */
+  .rates-section { background: var(--dark); }
+
+  .rates-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 4rem;
+  }
+
+  .rate-panel {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2.5rem;
+    background: var(--card);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .rate-panel.featured {
+    border-color: var(--accent);
+  }
+
+  .rate-panel.featured::before {
+    content: 'MOST POPULAR';
+    position: absolute;
+    top: 0; right: 0;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    font-weight: 700;
+    background: var(--accent);
+    color: var(--black);
+    padding: 4px 14px;
+    border-bottom-left-radius: var(--radius);
+  }
+
+  .rate-name {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .rate-price {
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    line-height: 1;
+    letter-spacing: 0.02em;
+    color: var(--accent);
+    margin-bottom: 0.25rem;
+  }
+
+  .rate-unit {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .rate-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-bottom: 2rem;
+  }
+
+  .rate-features li {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.7);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .rate-features li::before {
+    content: '✓';
+    color: var(--accent);
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ─── TECH SECTION ─── */
+  .tech-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    align-items: center;
+    min-height: 520px;
+  }
+
+  .tech-image {
+    height: 520px;
+    overflow: hidden;
+    position: relative;
+    background: var(--dark);
+  }
+
+  .tech-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.9;
+  }
+
+  .tech-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, transparent 60%, var(--black) 100%);
+  }
+
+  .tech-content {
+    padding: 4rem;
+    background: var(--black);
+  }
+
+  .tech-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-top: 2.5rem;
+  }
+
+  .tech-list li {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .tech-icon {
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 0.9rem;
+    background: var(--card);
+  }
+
+  .tech-text strong {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+  }
+
+  .tech-text span {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ─── REVIEWS ─── */
+  .reviews-section { background: var(--dark); }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 4rem;
+  }
+
+  .review-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+  }
+
+  .stars {
+    color: var(--accent);
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+  }
+
+  .review-text {
+    font-size: 0.92rem;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+    font-style: italic;
+  }
+
+  .review-author {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ─── LOCATION ─── */
+  .location-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+    margin-top: 4rem;
+  }
+
+  .hours-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5rem;
+  }
+
+  .hours-table tr {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hours-table td {
+    padding: 0.6rem 0;
+    font-size: 0.875rem;
+  }
+
+  .hours-table td:first-child {
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  .hours-table td:last-child {
+    text-align: right;
+    color: rgba(255,255,255,0.85);
+  }
+
+  .map-placeholder {
+    aspect-ratio: 4/3;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .map-placeholder iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    filter: grayscale(1) invert(0.9) contrast(0.85);
+    opacity: 0.7;
+  }
+
+  .contact-info {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .contact-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.7);
+  }
+
+  .contact-row strong {
+    color: var(--muted);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    min-width: 60px;
+  }
+
+  /* ─── CTA BANNER ─── */
+  .cta-banner {
+    background: var(--accent);
+    padding: 5rem 2rem;
+    text-align: center;
+  }
+
+  .cta-banner h2 {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--black);
+    line-height: 0.95;
+    margin-bottom: 1.5rem;
+  }
+
+  .cta-banner p {
+    font-size: 1rem;
+    color: rgba(0,0,0,0.65);
+    margin-bottom: 2.5rem;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .btn-dark {
+    display: inline-block;
+    background: var(--black);
+    color: var(--white);
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.9rem 2.5rem;
+    border-radius: var(--radius);
+    transition: background 0.2s;
+  }
+
+  .btn-dark:hover { background: #222; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--dark);
+    border-top: 1px solid var(--border);
+    padding: 3rem 2rem;
+  }
+
+  .footer-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 3rem;
+  }
+
+  .footer-brand .logo {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.75rem;
+  }
+
+  .footer-brand p {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.65;
+    max-width: 260px;
+    margin-bottom: 1.5rem;
+  }
+
+  .social-links {
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  .social-link {
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    color: var(--muted);
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .social-link:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .footer-col h4 {
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+
+  .footer-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .footer-col ul li a {
+    font-size: 0.875rem;
+    color: rgba(255,255,255,0.6);
+    transition: color 0.2s;
+  }
+
+  .footer-col ul li a:hover { color: var(--white); }
+
+  .footer-bottom {
+    max-width: var(--max);
+    margin: 2rem auto 0;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+
+  .footer-bottom a { color: var(--accent); }
+
+  /* ─── LOYALTY BADGE ─── */
+  .loyalty-strip {
+    background: var(--card);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 1.25rem 2rem;
+    text-align: center;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .loyalty-strip strong { color: var(--accent); }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    .how-grid { grid-template-columns: 1fr 1fr; }
+    .offerings-grid { grid-template-columns: 1fr 1fr; }
+    .rates-grid { grid-template-columns: 1fr; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .tech-section { grid-template-columns: 1fr; }
+    .tech-image { height: 300px; }
+    .tech-content { padding: 2.5rem 2rem; }
+    .location-grid { grid-template-columns: 1fr; }
+    .intro-strip .container { grid-template-columns: 1fr; }
+    .intro-quote { border-right: none; border-bottom: 1px solid rgba(0,0,0,0.12); }
+    .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+    nav { padding: 0 1rem; }
+    .nav-links { display: none; }
+  }
+
+  @media (max-width: 600px) {
+    .how-grid { grid-template-columns: 1fr; }
+    .offerings-grid { grid-template-columns: 1fr; }
+    section { padding: 4rem 1.25rem; }
+    .hero { padding: 5rem 1.25rem 4rem; }
+  }
+
+  /* ─── SCROLL ANIMATIONS ─── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    LAUNCH HOUSE
+    <span class="oc-tag">IRVINE, OC</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="https://oc.launchhouse.golf/rates">Rates</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#offerings">Services</a></li>
+    <li><a href="#location">Location</a></li>
+    <li><a href="https://app.birrdi.com/u/reserve?team_booking_link_id=launch-house-oc" target="_blank" class="nav-book">Book Online</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Launch House Golf — Orange County</p>
+    <h1>Play Golf<br><em>Anytime.</em><br>Your Rules.</h1>
+    <p class="hero-sub">Private, fully-automated indoor golf studios in Irvine. Book a bay, let yourself in, enjoy the game — no staff, no crowds, total privacy.</p>
+    <p class="hero-address">
+      <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+      1340 Reynolds Ave, Suite 116, Irvine, CA 92614
+    </p>
+    <div class="hero-ctas">
+      <a href="https://app.birrdi.com/u/reserve?team_booking_link_id=launch-house-oc" target="_blank" class="btn-primary">Book a Bay</a>
+      <a href="https://oc.launchhouse.golf/rates" class="btn-outline">View Rates</a>
+    </div>
+  </div>
+</section>
+
+<!-- AIRBNB STRIP -->
+<div class="intro-strip">
+  <div class="container">
+    <div class="intro-quote">
+      <p>"The AirBnB<br>of Indoor Golf"</p>
+    </div>
+    <div class="intro-details">
+      <p>Reserve your simulator like an Airbnb — keypad access, no staff needed.</p>
+      <p>Play 18 holes, hit the range, or run elite swing training sessions.</p>
+      <p>The whole space is yours. Outside food and drink welcome.</p>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="container">
+    <p class="section-label reveal">How It Works</p>
+    <h2 class="section-title reveal">Four steps<br>to tee time.</h2>
+    <div class="how-grid">
+      <div class="how-step reveal reveal-delay-1">
+        <div class="step-num">01</div>
+        <p class="step-title">Create an account</p>
+        <p class="step-body">Click "Book Online" and sign up with your mobile number. That's how we communicate and send your access code.</p>
+      </div>
+      <div class="how-step reveal reveal-delay-2">
+        <div class="step-num">02</div>
+        <p class="step-title">Reserve your time</p>
+        <p class="step-body">Choose a day and time slot. Allow a 30-minute buffer between bookings.</p>
+      </div>
+      <div class="how-step reveal reveal-delay-3">
+        <div class="step-num">03</div>
+        <p class="step-title">Receive your code</p>
+        <p class="step-body">30 minutes before your booking, you'll get a unique automated access code via text.</p>
+      </div>
+      <div class="how-step reveal">
+        <div class="step-num">04</div>
+        <p class="step-title">Show up & play</p>
+        <p class="step-body">Arrive 5 minutes early, let yourself in, enjoy total privacy. Clean up when done — just like an Airbnb.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFERINGS -->
+<section id="offerings" style="background: var(--dark);">
+  <div class="container">
+    <p class="section-label reveal">What We Offer</p>
+    <h2 class="section-title reveal">Play better golf.<br>Every session.</h2>
+    <div class="offerings-grid">
+      <div class="offering-card reveal reveal-delay-1">
+        <div class="offering-img">
+          <img src="https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?w=800&q=75" alt="Indoor golf simulator bay">
+        </div>
+        <div class="offering-body">
+          <p class="offering-tag">Public Play</p>
+          <h3 class="offering-title">Open Play</h3>
+          <p class="offering-desc">Book a bay and play at your own pace. Take on 100+ world-class courses or dial in your swing on the range — all with full shot data at your fingertips.</p>
+          <a href="https://oc.launchhouse.golf/rates" class="offering-link">View rates →</a>
+        </div>
+      </div>
+      <div class="offering-card reveal reveal-delay-2">
+        <div class="offering-img">
+          <img src="https://images.unsplash.com/photo-1633237308525-cd587cf71926?w=800&q=75" alt="Golf membership">
+        </div>
+        <div class="offering-body">
+          <p class="offering-tag">Membership</p>
+          <h3 class="offering-title">Members Club</h3>
+          <p class="offering-desc">Built for golfers serious about improvement. Members get discounted rates, priority booking, full analytics history, and 10% cash back through our Loyalty Club.</p>
+          <a href="https://square.link/u/UrYHfnpP" target="_blank" class="offering-link">Learn more →</a>
+        </div>
+      </div>
+      <div class="offering-card reveal reveal-delay-3">
+        <div class="offering-img">
+          <img src="https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?w=800&q=75" alt="Data-driven golf improvement">
+        </div>
+        <div class="offering-body">
+          <p class="offering-tag">Improvement</p>
+          <h3 class="offering-title">Data-Driven Game</h3>
+          <p class="offering-desc">Access 15+ ball and club analytics after every shot. Track your progress over time and watch your game improve with real numbers behind every decision.</p>
+          <a href="https://app.birrdi.com/u/reserve?team_booking_link_id=launch-house-oc" target="_blank" class="offering-link">Get started →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RATES -->
+<section id="rates" class="rates-section">
+  <div class="container">
+    <p class="section-label reveal">Pricing</p>
+    <h2 class="section-title reveal">Rates & Hours</h2>
+    <p class="section-body reveal">Flexible pricing for casual players, serious golfers, and everyone in between.</p>
+    <div class="rates-grid">
+      <div class="rate-panel reveal reveal-delay-1">
+        <p class="rate-name">Public Rate</p>
+        <p class="rate-price">$60</p>
+        <p class="rate-unit">per hour / per person</p>
+        <ul class="rate-features">
+          <li>Full simulator bay access</li>
+          <li>Any game mode — stroke play, range, skills</li>
+          <li>Outside food & beverages welcome</li>
+          <li>Keyless, staff-free entry</li>
+        </ul>
+        <a href="https://app.birrdi.com/u/reserve?team_booking_link_id=launch-house-oc" target="_blank" class="btn-outline">Book Now</a>
+      </div>
+      <div class="rate-panel featured reveal reveal-delay-2">
+        <p class="rate-name">Member Rate</p>
+        <p class="rate-price">$25</p>
+        <p class="rate-unit">per hour / members only</p>
+        <ul class="rate-features">
+          <li>Everything in public rate</li>
+          <li>Priority booking windows</li>
+          <li>10% cash back via Loyalty Club</li>
+          <li>Exclusive member events</li>
+          <li>Gift card discounts</li>
+        </ul>
+        <a href="https://square.link/u/UrYHfnpP" target="_blank" class="btn-primary">Become a Member</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOYALTY STRIP -->
+<div class="loyalty-strip">
+  <strong>Loyalty Club</strong> — Earn 10% cash back on every dollar you spend. Join free, start earning today.
+  &nbsp;&nbsp;·&nbsp;&nbsp; <a href="https://oc.launchhouse.golf/rates" style="color: var(--accent); text-decoration: underline;">Join for free →</a>
+</div>
+
+<!-- TECH SECTION -->
+<div class="tech-section">
+  <div class="tech-image">
+    <img src="https://images.unsplash.com/photo-1611374243504-b4a5dae7e56e?w=900&q=75" alt="Golf simulator with launch monitor">
+  </div>
+  <div class="tech-content">
+    <p class="section-label">Our Technology</p>
+    <h2 class="section-title" style="font-size: clamp(2rem,4vw,3.2rem);">Elite simulation,<br>right here in OC.</h2>
+    <ul class="tech-list">
+      <li>
+        <div class="tech-icon">⛳</div>
+        <div class="tech-text">
+          <strong>High-end overhead launch monitors</strong>
+          <span>AI swing coaching with 15+ ball and club analytics — club path, face angle, spin rate, smash factor, and more on every shot.</span>
+        </div>
+      </li>
+      <li>
+        <div class="tech-icon">🖥</div>
+        <div class="tech-text">
+          <strong>100+ course library</strong>
+          <span>Pebble Beach, St. Andrews, Augusta — play the world's greatest tracks.</span>
+        </div>
+      </li>
+      <li>
+        <div class="tech-icon">📱</div>
+        <div class="tech-text">
+          <strong>Fully automated access</strong>
+          <span>Mobile-based booking and keypad entry — no staff, no wait, just golf.</span>
+        </div>
+      </li>
+      <li>
+        <div class="tech-icon">🏆</div>
+        <div class="tech-text">
+          <strong>Swing analysis built in</strong>
+          <span>Review club path, face angle, ball speed, and spin data after every shot.</span>
+        </div>
+      </li>
+    </ul>
+    <div style="margin-top: 2.5rem;">
+      <a href="https://oc.launchhouse.golf/rates" class="btn-outline">See Rates & Details</a>
+    </div>
+  </div>
+</div>
+
+<!-- REVIEWS -->
+<section class="reviews-section">
+  <div class="container">
+    <p class="section-label reveal">Reviews</p>
+    <h2 class="section-title reveal">5-Star Rated<br>by our community.</h2>
+    <div class="reviews-grid">
+      <div class="review-card reveal reveal-delay-1">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Launch House is GREAT! After visiting, we decided to purchase our own simulator. They walked us through it all — the customer service was beyond amazing."</p>
+        <p class="review-author">— Karla A.</p>
+      </div>
+      <div class="review-card reveal reveal-delay-2">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Worked with the team on an enclosure package. They will work with you on getting great deals! I fully recommend them for all your golf sim needs."</p>
+        <p class="review-author">— Julien L.</p>
+      </div>
+      <div class="review-card reveal reveal-delay-3">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"These guys were awesome to work with. I have an unconventional space and they took the time to work with me — over email, phone, even sent pictures."</p>
+        <p class="review-author">— Thomas M.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section id="location">
+  <div class="container">
+    <p class="section-label reveal">Find Us</p>
+    <h2 class="section-title reveal">Location & Hours</h2>
+    <div class="location-grid">
+      <div class="reveal">
+        <div class="map-placeholder">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3319.3!2d-117.835!3d33.695!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s1340+Reynolds+Ave+%23116%2C+Irvine%2C+CA+92614!5e0!3m2!1sen!2sus!4v1"
+            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+        <div class="contact-info">
+          <div class="contact-row"><strong>Address</strong>1340 Reynolds Ave, Suite 116, Irvine, CA 92614</div>
+          <div class="contact-row"><strong>Phone</strong>(714) 951-3831</div>
+          <div class="contact-row"><strong>Email</strong>launchhouseoc@gmail.com</div>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <table class="hours-table">
+          <tr><td>Monday</td><td>12am–8am &amp; 5pm–Midnight</td></tr>
+          <tr><td>Tuesday</td><td>12am–8am &amp; 5pm–Midnight</td></tr>
+          <tr><td>Wednesday</td><td>12am–8am &amp; 5pm–Midnight</td></tr>
+          <tr><td>Thursday</td><td>12am–8am &amp; 5pm–Midnight</td></tr>
+          <tr><td>Friday</td><td>12am–8am &amp; 5pm–Midnight</td></tr>
+          <tr><td>Saturday</td><td>Open 24 Hours</td></tr>
+          <tr><td>Sunday</td><td>Open 24 Hours</td></tr>
+        </table>
+        <div style="margin-top: 2rem;">
+          <a href="https://maps.google.com/?q=1340+Reynolds+Ave+Suite+116+Irvine+CA" target="_blank" class="btn-outline" style="display: inline-block;">Get Directions →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <h2>Ready to tee off?<br>Book your bay now.</h2>
+  <p>No memberships required to get started. Play today, join tomorrow.</p>
+  <a href="https://app.birrdi.com/u/reserve?team_booking_link_id=launch-house-oc" target="_blank" class="btn-dark">Book Online</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <p class="logo">LAUNCH HOUSE GOLF</p>
+      <p>Orange County's premier private indoor golf studio. Part of the Launch House family — building the future of golf simulation since 2022.</p>
+      <div class="social-links">
+        <a href="https://www.facebook.com/launchhousenw/" target="_blank" class="social-link">f</a>
+        <a href="http://instagram.com/launchhousegolf/" target="_blank" class="social-link">ig</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="https://oc.launchhouse.golf/rates">Rates</a></li>
+        <li><a href="https://square.link/u/UrYHfnpP" target="_blank">Membership</a></li>
+        <li><a href="https://oc.launchhouse.golf/rates">Loyalty Club</a></li>
+        <li><a href="https://oc.launchhouse.golf/s/gift-cards" target="_blank">Gift Cards</a></li>
+        <li><a href="https://launchhouse.golf/pages/copy-of-shop" target="_blank">Shop</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Launch House</h4>
+      <ul>
+        <li><a href="https://launchhouse.golf" target="_blank">Main Site</a></li>
+        <li><a href="https://oc.launchhouse.golf/about-us">About Us</a></li>
+        <li><a href="https://launchhouse.golf/pages/portfolio" target="_blank">Portfolio</a></li>
+        <li><a href="https://oc.launchhouse.golf/contact-us">Contact Us</a></li>
+        <li><a href="https://oc.launchhouse.golf/faq">FAQ</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Launch House Golf — Irvine, OC. A satellite location of <a href="https://launchhouse.golf" target="_blank">launchhouse.golf</a>.</p>
+    <p style="color: var(--
