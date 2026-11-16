@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://oc.launchhouse.golf/sitemap.xml
