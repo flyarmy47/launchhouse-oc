@@ -182,6 +182,24 @@
   section[id] { scroll-margin-top: 96px; }
 </style>
 <style>.hv1:hover{color:#b87333 !important}.hv2:hover{color:#b87333 !important}.hv3:hover{color:#b87333 !important}.hv4:hover{background:#d99553 !important}.hv5:hover{background:#d99553 !important}.hv6:hover{border-color:#b87333 !important;color:#b87333 !important}.hv7:hover{border-color:#b87333 !important}.hv8:hover{background:#d99553 !important}.hv9:hover{border-color:rgba(240,240,234,0.4) !important}.hv10:hover{border-color:#b87333 !important;color:#b87333 !important}.hv11:hover{border-color:#b87333 !important;color:#b87333 !important}.hv12:hover{background:#d99553 !important}.hv13:hover{border-color:#b87333 !important;color:#b87333 !important}.hv14:hover{border-color:#b87333 !important;color:#b87333 !important}.hv15:hover{color:#b87333 !important}.hv16:hover{color:#b87333 !important}.hv17:hover{background:#d99553 !important}.hv18:hover{color:#b87333 !important}.hv19:hover{color:#b87333 !important}.hv20:hover{color:#b87333 !important}.hv21:hover{color:#b87333 !important}.hv22:hover{color:#b87333 !important}.hv23:hover{color:#b87333 !important}</style>
+<style>
+.hiw-wrap{position:relative}
+.hiw-ball{position:absolute;top:-22px;left:0;width:44px;height:44px;z-index:5;pointer-events:none;will-change:transform,left}
+.hiw-ball img{width:100%;height:100%;display:block;filter:drop-shadow(0 2px 6px rgba(0,0,0,.5))}
+.hiw-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(240,240,234,0.08);border-radius:8px;overflow:hidden}
+.hiw-card{background:rgba(14,14,14,0.8);padding:clamp(28px,3vw,44px);position:relative;overflow:hidden;transition:background .5s}
+.hiw-card.active{background:#161616}
+.hiw-card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:#b87333;transform:scaleX(0);transform-origin:left center;transition:transform .6s cubic-bezier(.22,1,.36,1)}
+.hiw-card.active::before{transform:scaleX(1)}
+.hiw-num{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(64px,6vw,88px);line-height:.8;color:#b87333;opacity:.12;margin-bottom:16px;transition:opacity .5s}
+.hiw-card.active .hiw-num{opacity:.4}
+.hiw-title{font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.04em;font-size:clamp(22px,2.2vw,28px);line-height:1.1;margin:0 0 12px;color:#f0f0ea;transition:color .5s}
+.hiw-card.active .hiw-title{color:#b87333}
+.hiw-desc{font-size:15px;font-weight:300;line-height:1.6;color:rgba(240,240,234,0.78);margin:0}
+@media (max-width:960px){.hiw-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.hiw-grid{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.hiw-ball{display:none}.hiw-card,.hiw-card::before,.hiw-num,.hiw-title{transition:none}}
+</style>
 </head>
 <body>
 <div style="width:100%;background:#080808">
@@ -250,25 +268,32 @@
     </div>
   </section>
 
-  <section style="border-top:1px solid rgba(240,240,234,0.08);border-bottom:1px solid rgba(240,240,234,0.08);background:#0b0a09">
+  <section id="how-it-works" class="hiw" style="border-top:1px solid rgba(240,240,234,0.08);border-bottom:1px solid rgba(240,240,234,0.08);background:#0b0a09">
     <div style="max-width:1240px;margin:0 auto;padding:clamp(56px,8vw,104px) clamp(18px,4vw,40px)">
-      <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(30px,5vw,54px);line-height:1;margin:0 0 44px">How it works</h2>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:clamp(20px,3vw,36px)">
-        <div style="display:flex;flex-direction:column;gap:12px;border-top:1px solid rgba(184,115,51,0.5);padding-top:20px">
-          <span style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:44px;line-height:1;color:#b87333">01</span>
-          <p style="font-size:16px;font-weight:300;line-height:1.6;color:rgba(240,240,234,0.78);margin:0">Book your time slot online through BayOS using your mobile number.</p>
-        </div>
-        <div style="display:flex;flex-direction:column;gap:12px;border-top:1px solid rgba(184,115,51,0.5);padding-top:20px">
-          <span style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:44px;line-height:1;color:#b87333">02</span>
-          <p style="font-size:16px;font-weight:300;line-height:1.6;color:rgba(240,240,234,0.78);margin:0">Reserve your date and time for up to 4 players, in 30-minute blocks. Only 4 players can be in the bay at one time, and you need to book at least 30 minutes before you start.</p>
-        </div>
-        <div style="display:flex;flex-direction:column;gap:12px;border-top:1px solid rgba(184,115,51,0.5);padding-top:20px">
-          <span style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:44px;line-height:1;color:#b87333">03</span>
-          <p style="font-size:16px;font-weight:300;line-height:1.6;color:rgba(240,240,234,0.78);margin:0">Thirty minutes before your session you'll get a text with your door code. It works from 10 minutes before your start time.</p>
-        </div>
-        <div style="display:flex;flex-direction:column;gap:12px;border-top:1px solid rgba(184,115,51,0.5);padding-top:20px">
-          <span style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:44px;line-height:1;color:#b87333">04</span>
-          <p style="font-size:16px;font-weight:300;line-height:1.6;color:rgba(240,240,234,0.78);margin:0">Arrive no more than 10 minutes early, when your code starts working. Let yourself in, play, and clean up when you're done, just like an Airbnb.</p>
+      <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(30px,5vw,54px);line-height:1;margin:0 0 56px">How it works</h2>
+      <div class="hiw-wrap">
+        <div class="hiw-ball" id="hiwBall" aria-hidden="true"><img src="/img/golf-ball.webp" alt="" width="44" height="44"></div>
+        <div class="hiw-grid">
+          <div class="hiw-card">
+            <div class="hiw-num">01</div>
+            <h3 class="hiw-title">Book</h3>
+            <p class="hiw-desc">Book your time slot online through BayOS using your mobile number.</p>
+          </div>
+          <div class="hiw-card">
+            <div class="hiw-num">02</div>
+            <h3 class="hiw-title">Reserve</h3>
+            <p class="hiw-desc">Reserve your date and time for up to 4 players, in 30-minute blocks. Only 4 players can be in the bay at one time, and you need to book at least 30 minutes before you start.</p>
+          </div>
+          <div class="hiw-card">
+            <div class="hiw-num">03</div>
+            <h3 class="hiw-title">Get your code</h3>
+            <p class="hiw-desc">Thirty minutes before your session you'll get a text with your door code. It works from 10 minutes before your start time.</p>
+          </div>
+          <div class="hiw-card">
+            <div class="hiw-num">04</div>
+            <h3 class="hiw-title">Play</h3>
+            <p class="hiw-desc">Arrive no more than 10 minutes early, when your code starts working. Let yourself in, play, and clean up when you're done, just like an Airbnb.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -421,5 +446,27 @@
     </div>
   </footer>
 </div>
+<script>
+(function(){
+  var sec=document.getElementById('how-it-works'); if(!sec) return;
+  var cards=sec.querySelectorAll('.hiw-card'), ball=document.getElementById('hiwBall'), grid=sec.querySelector('.hiw-grid');
+  if(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches){ cards.forEach(function(c){c.classList.add('active')}); return; }
+  var ticking=false;
+  function update(){
+    ticking=false;
+    var rect=sec.getBoundingClientRect(), winH=window.innerHeight;
+    var progress=Math.max(0,Math.min(1,(winH*0.75-rect.top)/Math.max(winH*0.6,sec.offsetHeight*0.7)));
+    if(ball&&grid){
+      ball.style.left=(progress*(grid.offsetWidth-44))+'px';
+      ball.style.transform='rotate('+(progress*1080)+'deg)';
+    }
+    cards.forEach(function(c,i){ c.classList.toggle('active', progress>=(i+0.5)/cards.length); });
+  }
+  function onScroll(){ if(!ticking){ ticking=true; requestAnimationFrame(update); } }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  window.addEventListener('resize',onScroll);
+  update();
+})();
+</script>
 </body>
 </html>
