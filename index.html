@@ -454,8 +454,8 @@
   var ticking=false;
   function update(){
     ticking=false;
-    var rect=sec.getBoundingClientRect(), winH=window.innerHeight;
-    var progress=Math.max(0,Math.min(1,(winH*0.75-rect.top)/Math.max(winH*0.6,sec.offsetHeight*0.7)));
+    var rect=grid.getBoundingClientRect(), winH=window.innerHeight;
+    var progress=Math.max(0,Math.min(1,(winH*0.5-rect.top)/Math.max(winH*0.35,grid.offsetHeight*0.7)));
     if(ball&&grid){
       ball.style.left=(progress*(grid.offsetWidth-44))+'px';
       ball.style.transform='rotate('+(progress*1080)+'deg)';
